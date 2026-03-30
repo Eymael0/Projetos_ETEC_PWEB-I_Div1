@@ -11,12 +11,12 @@ body{
     line-height: 1.6; /*altura entre as linhas 1.6x o tamanho da fonte*/
     color: #333; /*cor do texto 'cinza escuro'*/ 
     /*gradiente de fundo: 135deg é a direção, de roxo claro para roxo escuro*/
-    background: linear-gradient(135deg,#667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg,#a0a0a0 0%, #6e6e6e 100%);
     min-height: 100vh; /*vh = viewport height. Mínimo de 100% da altura da tela*/
 }
 /*===HEADER (CABEÇALHO)===*/
 header{
-    background-color: rgba(255, 255, 255, 0.95);/*Branco com 0.95 = 95% de opacidade*/
+    background-color: rgba(59, 59, 59, 0.95);/*Branco com 0.95 = 95% de opacidade*/
     padding: 1rem 5%;/*rem = 1.6px (tamanho padrão da fonte), 5% largura do container*/
     display: flex;/*ativa o flexbox para layout flexivel*/
     align-items: center;/*alinha os itens verticalmente ao centro*/
@@ -35,6 +35,64 @@ header img{
 }
 header img:hover{/*hover  = quando passa o mouse por cima faz alguma coisa*/
     transform: scale(1.05);/*aumenta 5% do tamanho da imagem original*/
+}
+nav a{
+    text-decoration: none; /*remove sublinhado de links*/
+    color: #b9b9b9; /*define uma cor do texto roxo*/
+    font-weight: 600;/*peso da fonte*/
+    padding: 0.5rem 1rem; /*8px em cima e 16 laterais*/
+    border-radius: 25px; /*bordas arredondadas*/
+    transition: all 0.3s ease; /*transição suave para todas as propriedades*/
+    position: relative; /*necessário para o pseudo-elemento ::after*/
+}
+nav a:hover{
+    background-color: #8a8a8a;
+    color: rgb(0, 0, 0);
+    transform: translateY(-2px); /*move os pixels para cima*/
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /*sombra suave*/
+}
+
+nav a::after{/*pseudo elementos para criar a linha animada abaixo dos links*/
+    content: ''; /*necessario p criar o elemento*/
+    position:absolute; /*posição em relação ao elemento*/
+    bottom: 0;/*cola na parte inferior*/
+    left: 50%; /*começa do meio*/
+    transform: translateX(-50%); /*centraliza horizontalmente*/
+    width: 0; /*começa com a largura 0*/
+    height: 2px;/*altura da linha*/
+    background-color: #951616;
+    transition: width 0.3s ease; /*anima apenas a largura*/
+
+}
+nav a:hover:after{
+    width: 80%; /*Expande para 80% da largura do link*/
+
+}
+/*==== CONTEÚDO PRINCIPAL ====*/
+main{
+    max-width: 1200px; /*largura maximo em pixels*/
+    margin: 2rem auto; /*32px cima/baixo auto nad laterais*/
+    padding: 2rem; /*espaçamento interno de 32px em todos os lados*/
+    background-color: rgba(155, 155, 155, 0.95);
+    border-radius: 20px;/*borda arredondada*/
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);/*somkbra um pouco mais pronunciada*/
+    backdrop-filter: blur(10px);/*efeito de desfoque no fundo*/
+    animation: slideIn 0.5s ease-out;/*animação de entrada*/
+
+
+}
+/*=== DEFINIÇÃO DA ANIMAÇÃO DO SLIDEIN ===*/
+@keyframes slideIn {
+    from{ /*estado inicial*/
+        opacity: 0;/*invisivel*/
+        transform: transalateY(30px);/*30px p baixo*/
+
+    }
+    to{
+        /*estado final*/
+        opacity: 1; /*visivel*/
+        transform: translateY(0); /*posição original*/
+    }
 }
 
 
